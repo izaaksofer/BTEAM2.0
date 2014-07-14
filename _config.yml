@@ -1,0 +1,10 @@
+# Site settings
+title: B-Team
+email: all@bteamfc.co.uk
+description: Our Blogg for Founders and Coders
+baseurl: ""
+url: "http://bteamfc.co.uk"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
