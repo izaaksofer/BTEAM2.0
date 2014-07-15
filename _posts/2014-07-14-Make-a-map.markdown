@@ -1,0 +1,15 @@
+---
+layout: blog
+title:  "Let's make a map"
+date: 2014-07-14 19:17:36
+categories: blog
+author: Besart
+media: <img src="https://lh4.googleusercontent.com/-F7lbMJwF85o/U8SZfEcuqKI/AAAAAAAABB8/NUNeC9k6taA/w884-h563-no/map.tiff">
+caption: Just a random image taken somewhere
+image: "https://lh3.googleusercontent.com/-OYZiHjG5C10/U8QEtmQ5wII/AAAAAAAABAI/HJnJQPXqUTI/w582-h586-no/let%2527s+make+a+mao.tiff"
+---
+
+It's monday, and as every monday, a new challenge is waiting for us! This time came to visit us Mike Bostock a really expert of data visualization, who has worked, amongst others, for New York Times.
+As usual the bar gets higher! We have time until this Friday afternoon for creating an interactive world map, showing the price of cocaine per country.
+
+By showing us the demo Mike made, we discover many business opportunity. For sure, one of the most interesting came from the arbitrage opportunity between Colombia and Canada. Buying a kilo for 200$ and sell it for 20.000$ sounded a great deal for most of us!

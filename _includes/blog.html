@@ -9,30 +9,6 @@
       <h1>Recent Blog Posts</h1>
       <div class="row">
       </div>
-
-      <!-- Sub menu -->
-      <nav class="submenu">
-        <ul>
-          <li>
-            <a href="./pages/blog/blog.html">All</a>
-          </li>
-          <li>
-            <a href="./pages/blog/blog.html">Technology</a>
-          </li>
-          <li>
-            <a href="./pages/blog/blog.html">Design</a>
-          </li>
-          <li>
-            <a href="./pages/blog/blog.html">Future trends</a>
-          </li>
-          <li>
-            <a href="./pages/blog/blog.html">Photography</a>
-          </li>
-          <li>
-            <a href="./pages/blog/blog.html">Other</a>
-          </li>
-        </ul>
-      </nav>
     </header>
     <!-- End Header -->
 
@@ -40,98 +16,28 @@
     <article>
       <!-- Blog articles -->
       <ul class="thumbnails">
+        {% for post in site.posts %}
         <!-- Blog post -->
         <li class="span4">
-
           <!-- Blog image -->
-          <a href="./pages/blog/blog_1.html">
-            <div style="height:300px; width:390px; background-image:url(http://www.mike-anderson-digital.co.uk/files/2813/6577/0639/broken-computer.jpg); background-position:center center; background-size:cover;" ></div>
+          <a href="{{ post.url }}">
+            <div style="height:300px; width:390px; background-image:url({{ post.image }}); background-position:center center; background-size:cover;" ></div>
           </a>
-
           <!-- Blog title -->
           <h5>
-            Day 3<br/>
-            <small>June 18, 2014</small>
+            {{ post.title }}<br/>
+            <small>{{ post.author }}, {{ post.date | date: "%b %-d, %Y" }}</small>
           </h5>
 
           <!-- Blog post description -->
-          <p class="smallFontBy08">It’s day three and we’ve learnt quite a lot of quite a little. From that, understand we’ve learnt the hard way, battling tooth and claw...</p>
+          <p class="smallFontBy08">{{ post.excerpt | truncatewords: 20 }}</p>
 
           <!-- Blog read more -->
           <div class="read-more">
-            <a href="./pages/blog/blog_1.html">Read More...</a>
+            <a href="{{ post.url }}">Read More...</a>
           </div>
         </li>
-        
-        <li class="span4">
-          <a href="./pages/blog/blog_2.html">
-            <div style="height:300px; width:390px; background-image:url(https://pbs.twimg.com/media/BsRNABAIgAELXjH.jpg:large); background-position:center center; background-size:cover;" ></div>
-          </a>
-          <h5>
-            Stefan Fowler interview<br/>
-            <small>June 27, 2014</small>
-          </h5>
-          <p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
-          <div class="read-more">
-            <a href="./pages/blog/blog_2.html">Read More...</a>
-          </div>
-        </li>
-        
-        <li class="span4">
-          <a href="./pages/blog/blog_3.html">
-            <div style="height:300px; width:390px; background-image:url(https://lh6.googleusercontent.com/-hctL-M3NBoo/U5GHOWwBl5I/AAAAAAAAAEs/dEcboS_EH7o/w587-h586-no/MXR_1117.jpg); background-position:center center; background-size:cover;"></div>
-          </a>
-          <h5>
-            BARRY'S LAST DAY<br/>
-            <small>June 28, 2014</small>
-          </h5>
-          <p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
-          <div class="read-more">
-            <a href="./pages/blog/blog_3.html">Read More...</a>
-          </div>
-        </li>
-        
-        <li class="span4">
-          <a href="./pages/blog/blog_4.html">
-            <div style="height:300px; width:390px; background-image:url(https://lh3.googleusercontent.com/-OYZiHjG5C10/U8QEtmQ5wII/AAAAAAAABAI/HJnJQPXqUTI/w582-h586-no/let%2527s+make+a+mao.tiff); background-position:center center; background-size:cover;"></div>
-          </a>
-          <h5>
-            LEt's make a map<br/>
-            <small>July 14, 2014</small>
-          </h5>
-          <p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
-          <div class="read-more">
-            <a href="./pages/blog/blog_4.html">Read More...</a>
-          </div>
-        </li>
-        
-        <li class="span4">
-          <a href="./pages/blog/blog_5.html">
-            <div style="height:300px; width:390px; background-image:url(https://pbs.twimg.com/media/BrerpWdCIAA-QvQ.jpg:large); background-position:center center; background-size:cover;"></div>
-          </a>
-          <h5>
-            Hard time with nodeJS<br/>
-            <small>July 1, 2014</small>
-          </h5>
-          <p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
-          <div class="read-more">
-            <a href="./pages/blog/blog_5.html">Read More...</a>
-          </div>
-        </li>
-        
-        <li class="span4">
-          <a href="./pages/blog/blog_6.html">
-             <div style="height:300px; width:390px; background-image:url(https://pbs.twimg.com/media/Brpl4LqCQAA78pa.jpg:large); background-position:center center; background-size:cover;"></div>
-          </a>
-          <h5>
-            Camden Watch Co. launch<br/>
-            <small>July 3, 2014</small>
-          </h5>
-          <p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
-          <div class="read-more">
-            <a href="./pages/blog/blog_6.html">Read More...</a>
-          </div>
-        </li>
+        {% endfor %}
       </ul>
     </article>
     <!-- End Article -->

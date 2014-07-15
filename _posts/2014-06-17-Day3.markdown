@@ -1,0 +1,11 @@
+---
+layout: blog
+title:  Day 3
+date: 2014-06-17 19:56:47
+categories: blog
+author: Izaak
+media: <img src="http://www.mike-anderson-digital.co.uk/files/2813/6577/0639/broken-computer.jpg">
+image: "http://www.mike-anderson-digital.co.uk/files/2813/6577/0639/broken-computer.jpg"
+---
+
+It’s day three and we’ve learnt quite a lot of quite a little. From that, understand we’ve learnt the hard way, battling tooth and claw through misunderstanding, muddle and mistake to gain a fairly deep understanding of a few basic tools.
