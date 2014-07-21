@@ -1,0 +1,15 @@
+---
+layout: blog
+title:  What makes a good Founder & Coder
+date: 2014-07-22 09:00:00
+categories: blog
+author: Izaak
+media: <img src="http://www.mike-anderson-digital.co.uk/files/2813/6577/0639/broken-computer.jpg">
+image: "http://www.mike-anderson-digital.co.uk/files/2813/6577/0639/broken-computer.jpg"
+---
+
+
+
+Today, we’ve been tasked with trying to get the word out to potential students, for the next course. For most of us, we will look to our respective networks of friends and work colleagues, maybe using Facebook, and that kind of thing. Typically, you think of recent graduates of STEM subjects as being prime for something like this. However, it’s not necessarily the case that these, almost generic, pools of potential coders make the best candidates. Our cohort has been pretty eclectic. People have come from all walks of life: Design, language, philosophy, to name a few. It’s not necessarily obvious who’s going to do the best. Certainly, within our group, there isn’t much of a correlation between STEM and programming proficiency. The best on the course have been the hardest working. That characteristic is what I’ll look for when I’m thinking of potential candidates. 
+
+Now, where do all the hard workers hang out...

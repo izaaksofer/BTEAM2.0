@@ -1,0 +1,14 @@
+---
+layout: blog
+title:  Average or Outlier?
+date: 2014-07-07 19:56:47
+categories: blog
+author: Izaak
+media: <img src="http://www.mike-anderson-digital.co.uk/files/2813/6577/0639/broken-computer.jpg">
+image: "http://www.mike-anderson-digital.co.uk/files/2813/6577/0639/broken-computer.jpg"
+---
+
+
+It’s an interesting question; how much quality of an educational environment depends on the people around you. The dynamic, practical and engaging curriculum at Founders and Coders is definitely a big part of the effectiveness of this course but, at the same time, it’s not very often that you find so many bright and motivated people working under one roof. I’ve certainly never experienced this level of enthusiasm and commitment from a peer group, even while doing a difficult course, at a good university. 
+
+It will be interesting to see if future courses are as successful, or if this one will stand out from the others.
