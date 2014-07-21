@@ -6,7 +6,7 @@
             <button id="btn-whole">Whole price</button>
         </div>
         
-        <div id="map" class="span4">
+        <div id="map" class="span8">
             <script src="http://d3js.org/d3.v3.min.js"></script>
             <script src="http://d3js.org/topojson.v1.min.js"></script>
             <script>
@@ -25,7 +25,7 @@
                 var projection = d3.geo.orthographic()
                     .scale(width / 3.1)
                     .clipAngle(90)
-                    .translate([width / 2, height / 2]);
+                    .translate([width / 3, height / 3]);
             
                 var graticule = d3.geo.graticule();
             
