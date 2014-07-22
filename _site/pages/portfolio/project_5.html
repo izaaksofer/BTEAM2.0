@@ -1,146 +1,162 @@
 <section class="portfolio-item-details">
     <div class="row-fluid">
-        <div id="map" class="span8">
-            
-          <script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://d3js.org/topojson.v1.min.js"></script>
-<script>
-
-var width = 900,
-    height = 600,
-    speed = -1e-2,
-    start = Date.now();
-
-var sphere = {type: "Sphere"};
-
-var projection = d3.geo.orthographic()
-    .scale(width / 3.1)
-    .clipAngle(90)
-    .translate([width / 2, height / 2]);
-
-var graticule = d3.geo.graticule();
-
-var canvas = d3.select("#map").append("canvas")
-    .attr("width", width)
-    .attr("height", height);
-
-var context = canvas.node().getContext("2d");
-
-var path = d3.geo.path()
-    .projection(projection)
-    .context(context);
-
-d3.json("assets/js/world.json", function(error, topo) {
-
-
-
-
-  //  
-  var land = topojson.feature(topo, topo.objects.countries),
-      grid = graticule();
-
-
-
-
-
-    // everything is inside this function  
-    d3.timer(function() {
-        var λ = speed * (Date.now() - start),
-            φ = -15;
-
-        // seems better horizon line
-        context.clearRect(0, 0, width, height);
-
-        // creates the horizon line
-        context.beginPath();
-        path(sphere);
-        context.lineWidth = 3;
-        context.strokeStyle = "#000";
-        context.stroke();
-        context.fillStyle = "#fff";
-        context.fill();
-
-        // seems to make it trasparent
-        context.save();
-        context.translate(width / 2, 0);
-        context.scale(-1, 1);
-        context.translate(-width / 2, 0);
-        projection.rotate([λ + 180, -φ]);
-
-        // shows the back shadow --> path(land)
-        context.beginPath();
-        path(land);
-        context.fillStyle = "#dadac4";
-        context.fill();
-
-        // grid (lines) back shadow
-        context.beginPath();
-        path(grid);
-        context.lineWidth = .5;
-        context.strokeStyle = "rgba(119,119,119,.5)";
-        context.stroke();
-
-        // not clear
-        context.restore();
-        projection.rotate([λ, φ]);
-
-        // grid front
-        context.beginPath();
-        path(grid);
-        context.lineWidth = .5;
-        context.strokeStyle = "rgba(119,119,119,.5)";
-        context.stroke();
-
-        // shows the front states --> path(land)
-        context.beginPath();
-        path(land);
-        context.fillStyle = "#737368";
-        context.fill();
-        context.lineWidth = .5;
-        context.strokeStyle = "#000";
-        context.stroke();
-    });
-});
-
-// not clear
-d3.select(self.frameElement).style("height", height + "px");
-
-</script>
-          
-        </div>
-        <div class="span4">
+        <div>
+        
             <div class="close-portfolio">
                 <span>&#10006;</span>
                 <div class="clearfix"></div>
             </div>
-            <h5>Everyone</h5>
-            <article class="smallFontBy08">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br/>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                </p>
-            </article>
-            <section class="website">
-                <h5>Visit site</h5>
-                <a href="#" class="smallFontBy08">www.webaddress.com</a>
-            </section>
             
-            <div class="social-icons sicon-black bordered bordered-black">
-                <a href="#" class="sicon-white sicon-facebook"><i>Facebook</i></a>
-                <a href="#" class="sicon-white sicon-twitter"><i>Twitter</i></a>
-                <a href="#" class="sicon-white sicon-pinterest"><i>Pinterest</i></a>
-            </div>
-            
-            <div class="submenu">
-                <ul>
-                    <li>
-                        <span>Illustration</span>
-                    </li>
-                    <li>
-                        <span>Photography</span>
-                    </li>
-                </ul>
-            </div>
+            <h1>The price of Cocaine</h1>
+            <button id="btn-retail">Retail price</button>
+            <button id="btn-whole">Whole price</button>
         </div>
-    </div>
+        
+        <div id="map" class="span8">
+            <script src="http://d3js.org/d3.v3.min.js"></script>
+            <script src="http://d3js.org/topojson.v1.min.js"></script>
+            <script>
+            var color = "red";
+            var selected_index = 0;
+            
+            function startAnimation () {
+            
+                var width = 900,
+                    height = 600,
+                    speed = -1e-2,
+                    start = Date.now();
+            
+                var sphere = {type: "Sphere"};
+            
+                var projection = d3.geo.orthographic()
+                    .scale(width / 3.1)
+                    .clipAngle(90)
+                    .translate([width / 2, height / 2]);
+            
+                var graticule = d3.geo.graticule();
+            
+                var canvas = d3.select("#map").append("canvas")
+                    .attr("width", width)
+                    .attr("height", height)
+                    .attr("viewBox", "0 0 900 600");
+            
+                var context = canvas.node().getContext("2d");
+            
+                var path = d3.geo.path()
+                    .projection(projection)
+                    .context(context);
+            
+                d3.json("assets/js/data.json", function(rawData){
+            
+                    var price = {};
+                    /* store data on the fly
+                    var price = {
+                        ID: [
+                        "retail_price",
+                        "wholesale_price",
+                        "country_name"]
+                    }
+                    */
+            
+                    for (var i=0; i<rawData.length; i++){
+                        var datum = rawData[i];
+                        var country_id = datum["Alpha-2"],
+                            retail_price = datum["Retail price"],
+                            wholesale_price = datum["Wholesale price"],
+                            country_name = datum["Country name"];
+            
+                        price[country_id] = [retail_price, wholesale_price, country_name];
+                    }
+            
+                    console.log("Hello World");
+                    console.log(price);
+            
+            
+                    d3.json("assets/js/world.json", function(error, topo) {
+                        var land = topojson.feature(topo, topo.objects.subunits),
+                            grid = graticule();
+            
+                        d3.timer(function() {
+                            var λ = speed * (Date.now() - start),
+                                φ = -15;
+            
+                            context.clearRect(0, 0, width, height);
+            
+                            context.beginPath();
+                            path(sphere);
+                            context.lineWidth = 3;
+                            context.strokeStyle = "#000";
+                            context.stroke();
+                            context.fillStyle = "#fff";
+                            context.fill();
+            
+                            context.save();
+                            context.translate(width / 2, 0);
+                            context.scale(-1, 1);
+                            context.translate(-width / 2, 0);
+                            projection.rotate([λ + 180, -φ]);
+            
+                            context.beginPath();
+                            path(land);
+                            context.fillStyle = "#dadac4";
+                            context.fill();
+            
+                            context.beginPath();
+                            path(grid);
+                            context.lineWidth = .1;
+                            context.strokeStyle = "rgba(119,119,119,.5)";
+                            context.stroke();
+            
+                            context.restore();
+                            projection.rotate([λ, φ]);
+            
+                            context.beginPath();
+                            path(grid);
+                            context.lineWidth = .1;
+                            context.strokeStyle = "rgba(119,119,119,.5)";
+                            context.stroke();
+            
+                            context.beginPath();
+                            path(land);
+                            context.fillStyle = "#eeeeee";
+                            context.fill();
+                            context.lineWidth = .5;
+                            context.strokeStyle = "#000";
+                            context.stroke();
+            
+                            var upper_end = [200, 30000][selected_index];
+                            var colorScale = d3.scale.linear()
+                                .domain([0, upper_end])
+                                .range(["white", color]);
+            
+                            for (a=0; a<land.features.length; a++) {
+            
+                                if (price[land.features[a].id] && price[land.features[a].id][selected_index] ) {
+                                    context.beginPath();
+                                    path(land.features[a]);
+                                    context.fill();
+                                    context.fillStyle = colorScale(price[land.features[a].id][selected_index]);
+                                    context.lineWidth = .5;
+                                    context.strokeStyle = "#000";
+                                    context.stroke();
+                                };
+                            };
+                        });
+                    });
+                d3.select(self.frameElement).style("height", height + "px");
+                });
+            }
+            
+            startAnimation();
+            
+            d3.select("#btn-retail").on("click", function() {
+                selected_index = 0;
+            });
+            
+            d3.select("#btn-whole").on("click", function() {
+                selected_index = 1;
+            });
+            </script>
+        </div>
+
 </section>
